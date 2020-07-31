@@ -20,6 +20,6 @@
 <br><br><strong> Comments: </strong><br>
 <% @book.comments.each do |comment| %>
  <br>"<%= comment.content %>"<i><small> by </small><%= comment.user.name %></i>
- <br><small><%= link_to 'Edit', edit_comment_path %></small>
- <small><%= link_to "Delete", book_comment_path(@book) %></small><br><br>
+ <br><small><%= link_to 'Edit', edit_book_comment_path(@book, comment) %></small>
+ <small><%= link_to "Delete", comment, method: :delete, data: {:confirm => 'Delete this comment?'} %></small><br><br>
 <% end %>
