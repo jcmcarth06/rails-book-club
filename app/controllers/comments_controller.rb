@@ -2,11 +2,12 @@ class CommentsController < ApplicationController
     before_action :find_comment, :redirect_if_not_user, only: [:show, :edit, :update, :destroy]
     
     def index
-        if params[:books_id]
-          @comments = Book.find(params[:book_id]).comments
-        else
-          @comments = Comment.all
-        end
+        @user = User.find_by(id: params[:user_id])
+        if @user 
+            @comments = @user.comments 
+        else 
+            @comments = Comment.all
+        end 
     end
 
     def new
@@ -15,32 +16,40 @@ class CommentsController < ApplicationController
 
     def create
         @book = Book.find(params[:book_id])
-        @comment = @book.comments.build(comment_params)
-        @comment.user_id = current_user.id
+        @comment = @book.comments.create(comment_params)
+        @comment.user.id = current_user.id
         if @comment.save
             redirect_to book_path(@book)
         else
-            redirect_to books_path
+            redirect_to book_path(book)
         end
     end
 
     def show
-        find_comment
+        @book = Book.find(params[:id])
       end
 
     def edit
+        @comment = Comment.find_by(id: params[:id])
     end
 
     def update
-        @book = Book.find(params[:book_id])
-        if @comment.update(comment_params)
-            redirect_to book_path(@book)
+        @comment = Comment.find_by(id: params[:id])
+        if @comment.user == current_user
+            @book.comment.update(comment_params)
+            redirect_to comment_path(@comment)
         else
             render :edit
         end
     end
 
     def destroy
+        @comment = Comment.find_by(id: params[:id])
+        if @comment.user.id == current_user.id 
+            @comment.destroy 
+        else 
+            redirect_to books_path 
+        end
     end
 
 private
@@ -50,7 +59,7 @@ private
     end
 
     def comment_params
-        params.require(:comment).permit(:content, :book_id, user_attributes: [:name])
+        params.require(:comment).permit(:content, :book_id)
     end
 
 end
