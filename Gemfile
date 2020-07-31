@@ -24,7 +24,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-google-oauth2'
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
+gem "bulma-rails", "~> 0.8.0"
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

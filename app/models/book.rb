@@ -1,5 +1,6 @@
 class Book < ApplicationRecord
     belongs_to :user
+    belongs_to :left_comments
     has_many :books_genres
     has_many :genres, through: :books_genres
     has_many :comments
