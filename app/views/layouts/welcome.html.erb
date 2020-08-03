@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,10 +6,43 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/solar/bulmaswatch.min.css">
+    <div class="wrapper" role="navigation">
   </head>
   <body>
-    <%= yield %>
-    <br><br><%= button_to "Log in with Google", '/auth/google_oauth2' %>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://versions.bulma.io/0.7.0">
+    </a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+    <div class="container">
+      <% if logged_in? %>
+        <strong>
+        <a class="button is-primary is-outlined" href="/"> Home </a>
+        <a class="button is-primary is-outlined" href="/users/:id"> Profile </a>
+        <a class="button is-primary is-outlined" href="/genres"> Genres </a>
+        <a class="button is-primary is-outlined" href="/signout"> Sign Out </a>
+        </strong>
+      <% end %>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+  <div class="wrapper" role="navigation">
+      <% flash.each do |type, msg| %>
+        <br><div class="alert alert-warning" role-"alert" >
+          <%= msg %>
+        </div>
+      <% end %>
+      <section class="section">
+      <div class="content">
+        <%= yield %>
+        <br><br><%= button_to "Log in with Google", '/auth/google_oauth2' %>
+      </div>
+    </section>
+    
   </body>
 </html>
