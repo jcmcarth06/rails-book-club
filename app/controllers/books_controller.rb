@@ -3,7 +3,7 @@ class BooksController < ApplicationController
     before_action :redirect_if_not_user, only: [:edit, :update, :destroy]
     
     def index
-        @books = Book.alphabetize
+        @books = Book.search_for_books(params[:title]).alphabetize
     end
 
     def new

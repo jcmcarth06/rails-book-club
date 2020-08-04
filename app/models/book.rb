@@ -11,16 +11,11 @@ class Book < ApplicationRecord
         self.order(:title)
     end
 
-    def self.search(search)
-        if search
-            book_name = Book.find_by(name: search)
-            if book_name
-                self.where(book_id: book_name)
-            else
-                @books = Book.all
-            end
+    def self.search_for_books(search)
+        if !search.blank?
+            Book.where("title like ?", "%#{search}%" )
         else
-            @books = Book.all
+            Book.all
         end
     end            
         
