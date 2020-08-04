@@ -13,7 +13,7 @@ class Book < ApplicationRecord
 
     def self.search_for_books(search)
         if !search.blank?
-            Book.where("title like ?", "%#{search}%" )
+            Book.where("author like ?", "%#{search}%" )
         else
             Book.all
         end
