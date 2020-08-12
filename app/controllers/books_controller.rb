@@ -52,7 +52,8 @@ private
 
     def redirect_if_not_user
         if @book.user != current_user
-            redirect_to user_path(current_user), alert: "Sorry! You do not have permission to edit or delete this book. Here are your books:"  
+            flash[:error] = "Sorry! You do not have permission to edit or delete this book. Here are your books:"  
+            redirect_to user_path(current_user)
         end
     end
 

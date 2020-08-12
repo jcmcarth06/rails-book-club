@@ -65,7 +65,8 @@ class CommentsController < ApplicationController
 
     def redirect_if_not_user
         if @comment.user != current_user
-            redirect_to book_path(@comment.book_id), alert: "Sorry! You can only edit or delete your own comments."  
+            flash[:error] = "Sorry! You can only edit or delete your own comments."
+            redirect_to book_path(@comment.book_id)
         end
     end
 

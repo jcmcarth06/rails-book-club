@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html>
+
   <head>
     <title>BookClub</title>
     <%= csrf_meta_tags %>
@@ -32,11 +34,9 @@
   </div>
 </nav>
   <div class="wrapper" role="navigation">
-      <% flash.each do |type, msg| %>
-        <br><div class="alert alert-warning" role-"alert" >
-          <%= msg %>
-        </div>
-      <% end %>
+  <% flash.each do |name, message| -%>
+    <%= content_tag :div, message, class: "notification is-warning" %>
+  <% end %>
       <section class="section">
       <div class="content">
         <%= yield %>
