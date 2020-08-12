@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
     before_action :find_comment, only: [:show, :edit, :update, :destroy]
+    before_action :redirect_if_not_user, only: [:edit, :update, :destroy]
 
     def index
         @user = User.find_by(id: params[:user_id])
@@ -61,4 +62,11 @@ class CommentsController < ApplicationController
     def find_comment
         @comment = Comment.find(params[:id])
     end
+
+    def redirect_if_not_user
+        if @comment.user != current_user
+            redirect_to book_path(@comment.book_id), alert: "Sorry! You can only edit or delete your own comments."  
+        end
+    end
+
 end
