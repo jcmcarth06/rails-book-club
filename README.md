@@ -1,24 +1,17 @@
-# README
+BOOK CLUB!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to The Book Club! Use this website to create a database of books to be shared and read by a group of individual contributors. Users can create, edit, and delete books upon completion, and their entries are only alterable by themselves. Each book entry includes specific information, including the Title, Author, Genre, and a short Blurb about the content of the book. Users may also leave comments on any books anyone has entered into the database.
 
-Things you may want to cover:
+Installation To install this program, clone the repository from https://github.com/jcmcarth06/rails-book-club, then run 'bundle install' in the terminal.
 
-* Ruby version
+Usage The user must first create a signup profile that includes a unique email, username, and password. From the signup page, the user wil be automatically be routed to the book list index. On other log in instances, the user will start at the login page. If they enter invalid credentials, they will be redirected to the signup page to create some, which will send them down that same route. From the index page, the user can see a list of all of the books they and other users have added. They can view specific details about each book, including title, author, genre, and a blurb, by clicking on the title. They will also be able to add a new book to the database from the index page which includes all of the aforementioned attributes. When a user is on the view page, they have the option to edit or delete a book from the database, but will only be able to update or delete an instance that they created. Users may also leave comments on books created by other users. The user can also view all of their books and comments from their profile show page. At the top of each page is a home feature, which routes the user to the book list index, a profile feature, a genres indec, and a log out feature, which logs the user out of that session.
 
-* System dependencies
+Development After checking out the repo, run bin/setup to install dependencies. You can also run bin/console for an interactive prompt that will allow you to experiment.
 
-* Configuration
+To install this gem onto your local machine, run bundle exec rake install. To release a new version, update the version number in version.rb, and then run bundle exec rake release, which will create a git tag for the version, push git commits and tags, and push the .gem file to rubygems.org.
 
-* Database creation
+Contributing This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-* Database initialization
+License The gem is available as open source under the terms of the MIT License.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Code of Conduct Everyone interacting in the CLIProject project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct.

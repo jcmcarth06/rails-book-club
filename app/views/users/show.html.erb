@@ -5,6 +5,6 @@
 <% end %>
 <div><br><br>
 <h2>Comments</h2>
-<% @user.comments.each do |comment| %>
-    "<%= comment.content %>"
+<% @user.comments.each do |comment, book| %>
+    "<%= comment.content %>" <i> -- on</i> <strong><%= comment.book.title %></strong> <i>by</i> <%= comment.book.author %><br><br>
 <% end %>

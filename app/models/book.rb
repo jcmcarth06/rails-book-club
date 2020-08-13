@@ -11,9 +11,13 @@ class Book < ApplicationRecord
         self.order(:title)
     end
 
+    def self.most_commented
+        self.left_joins(:comments).group(:id).order("COUNT(comments.id) DESC")
+    end
+
     def self.search_for_books(search)
         if !search.blank?
-            Book.where("author like ?", "%#{search}%" )
+            Book.where("title like ? OR author like ?", "%#{search}%", "%#{search}%" )
         else
             Book.all
         end
